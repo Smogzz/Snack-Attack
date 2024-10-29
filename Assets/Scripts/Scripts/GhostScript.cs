@@ -40,7 +40,7 @@ public class GhostScript : MonoBehaviour
     {
         STATUS();
         GRAVITY();
-        Respawn();
+
         // this character status
         if(!PlayerStatus.ContainsValue( true ))
         {
@@ -84,9 +84,15 @@ public class GhostScript : MonoBehaviour
             DissolveFlg = false;
         }
     }
-    void OnTriggerEnter(collider other)
-     if(other.GameObject.tag == good)
 
+    void OnTriggerEnter(Collider other)
+    {
+
+
+    }
+   
+
+        
     //---------------------------------------------------------------------
     // character status
     //---------------------------------------------------------------------

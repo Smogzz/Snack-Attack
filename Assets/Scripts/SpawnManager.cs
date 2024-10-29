@@ -6,12 +6,12 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] snackPrefabs;
 
-    private float spawnLimitXLeft = -5.31f;
-    private float spawnLimitXRight = 5.12f;
-    private float spawnPosY = 5.63f;
 
+    private float spawnPosY = 5.63f;
+    private float xRange=  5.12f;
+    private float zRange;
     private float startDelay = 0.1f;
-    private float spawnInterval = 1.0f;
+    private float spawnInterval = 2.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class SpawnManager : MonoBehaviour
         // Generate random snack index and random spawn position
        int snackIndex = Random.Range(0, snackPrefabs.Length);
        
-        Vector3 spawnPos = new Vector3(Random.Range,(-xRange, xRange),10,Random.Range,(-zRange, zRange));
+        Vector3 spawnPos = new Vector3(Random.Range(-5.86f,4.03f),10,Random.Range(-4.3f, 5.7f));
         // instantiate snack at random spawn location
         Instantiate(snackPrefabs[snackIndex], spawnPos, snackPrefabs[snackIndex].transform.rotation);
     }
