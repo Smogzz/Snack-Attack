@@ -6,6 +6,7 @@ using UnityEngine.UI;
 namespace Sample {
 public class GhostScript : MonoBehaviour
 {
+    public GameObject snackPrefabs;
     private Animator Anim;
     private CharacterController Ctrl;
     private Vector3 MoveDirection = Vector3.zero;
@@ -31,7 +32,7 @@ public class GhostScript : MonoBehaviour
     {
         Anim = this.GetComponent<Animator>();
         Ctrl = this.GetComponent<CharacterController>();
-        HP_text = GameObject.Find("Canvas/HP").GetComponent<Text>();
+    //HP_text = GameObject.Find("Canvas/HP").GetComponent<Text>();
         HP_text.text = "HP " + HP.ToString();
     }
 
@@ -83,6 +84,8 @@ public class GhostScript : MonoBehaviour
             DissolveFlg = false;
         }
     }
+    void OnTriggerEnter(collider other)
+     if(other.GameObject.tag == good)
 
     //---------------------------------------------------------------------
     // character status
@@ -290,30 +293,6 @@ public class GhostScript : MonoBehaviour
             HP_text.text = "HP " + HP.ToString();
         }
     }
-    //---------------------------------------------------------------------
-    // respawn
-    //---------------------------------------------------------------------
-    private void Respawn ()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            // player HP
-            HP = maxHP;
-            
-            Ctrl.enabled = false;
-            this.transform.position = Vector3.zero; // player position
-            this.transform.rotation = Quaternion.Euler(Vector3.zero); // player facing
-            Ctrl.enabled = true;
-            
-            // reset Dissolve
-            Dissolve_value = 1;
-            for(int i = 0; i < MeshR.Length; i++)
-            {
-                MeshR[i].material.SetFloat("_Dissolve", Dissolve_value);
-            }
-            // reset animation
-            Anim.CrossFade(IdleState, 0.1f, 0, 0);
-        }
-    }
+    
 }
 }
